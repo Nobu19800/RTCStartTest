@@ -40,7 +40,8 @@ class TestService_TimeMeasurementSVC_impl
    // attributes and operations
    RTC::Time getTime();
 
-	 void setTime(uint64_t sec, uint64_t nsec);
+	 //void setTime(uint64_t sec, uint64_t nsec);
+	 void setTime();
 
  private:
 	 RTC::Time m_startTime;

@@ -94,8 +94,8 @@ RTC::ReturnCode_t RTCStartTest::onInitialize()
   bindParameter("starttime_nsec", m_starttime_nsec, "0");
   // </rtc-template>
 
-	m_testserviceif.setTime((uint64_t)m_starttime_sec, (uint64_t)m_starttime_nsec);
-
+	//m_testserviceif.setTime((uint64_t)m_starttime_sec, (uint64_t)m_starttime_nsec);
+	m_testserviceif.setTime();
   
   return RTC::RTC_OK;
 }
