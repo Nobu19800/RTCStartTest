@@ -1,0 +1,54 @@
+# RTCStartTest CMake config file
+#
+# This file sets the following variables:
+# RTCStartTest_FOUND - Always TRUE.
+# RTCStartTest_INCLUDE_DIRS - Directories containing the RTCStartTest include files.
+# RTCStartTest_IDL_DIRS - Directories containing the RTCStartTest IDL files.
+# RTCStartTest_LIBRARIES - Libraries needed to use RTCStartTest.
+# RTCStartTest_DEFINITIONS - Compiler flags for RTCStartTest.
+# RTCStartTest_VERSION - The version of RTCStartTest found.
+# RTCStartTest_VERSION_MAJOR - The major version of RTCStartTest found.
+# RTCStartTest_VERSION_MINOR - The minor version of RTCStartTest found.
+# RTCStartTest_VERSION_REVISION - The revision version of RTCStartTest found.
+# RTCStartTest_VERSION_CANDIDATE - The candidate version of RTCStartTest found.
+
+message(STATUS "Found RTCStartTest-@PROJECT_VERSION@")
+set(RTCStartTest_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(RTCStartTest_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(RTCStartTest_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(RTCStartTest_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(RTCStartTest_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(RTCStartTest_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(RTCStartTest_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(RTCStartTest_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(RTCStartTest_VERSION @PROJECT_VERSION@)
+set(RTCStartTest_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(RTCStartTest_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(RTCStartTest_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(RTCStartTest_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+
