@@ -167,7 +167,8 @@ include(CPack)
 
 
 
-if(NOT WIN32)
+if(UNIX)
+	include(GNUInstallDirs)
 	install(
 		FILES ${PROJECT_SOURCE_DIR}/startRTCStartTest
 		DESTINATION ${CMAKE_INSTALL_BINDIR}
